@@ -1,18 +1,43 @@
-# Salesforce DX Project: Next Steps
+# Restaurant Management System | Salesforce
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+**Personal Project** | Salesforce Lightning Platform
 
-## How Do You Plan to Deploy Your Changes?
+## Overview
+Built a custom Salesforce application to manage restaurant operations including table reservations, menu items, and order processing. Designed 5 custom objects with Lookup and Master-Detail relationships to reflect real-world data hierarchy.
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+## Objects
+- Restaurant Table
+- Menu Item
+- Order
+- Order Item
+- Reservation
 
-## Configure Your Salesforce DX Project
+## Features Implemented
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+**Price Automation**
+Implemented Record-Triggered Flow to automatically populate Unit Price from the related Menu Item upon Order Item creation, eliminating manual data entry errors.
 
-## Read All About It
+**Subtotal Calculation**
+Created Formula Field to calculate Order Item subtotals dynamically based on Quantity x Unit Price.
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+**Total Amount Calculation**
+Configured Roll-Up Summary Field on the Order object to automatically aggregate all Order Item subtotals into a real-time Total Amount.
+
+**Table Status Automation**
+Built Apex Trigger using the Trigger + Handler design pattern to update table status in real-time based on order lifecycle:
+- New / Preparing / Served → Occupied
+- Paid / Cancelled → Available
+
+## Technologies Used
+- Apex (Trigger + Handler Pattern)
+- Flow Builder (Record-Triggered Flow)
+- SOQL
+- Formula Fields
+- Roll-Up Summary Fields
+- Salesforce Lightning Platform
+
+## Key Highlights
+- End-to-end order lifecycle automation
+- Real-world business logic using Apex
+- Data consistency across related objects
+- Scalable and reusable architecture
